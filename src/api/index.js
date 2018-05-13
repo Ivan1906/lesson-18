@@ -2,26 +2,23 @@ const express = require('express');
 
 const { errorHandler } = require('../middleware');
 // list of models here
-const { Answer } = require('../models/answers');
-const { Question } = require('../models/questions');
-const { Vote } = require('../models/votes');
+const { Question } = require('../models/question');
 
-//list of controllers here
-const answers = require('../controllers/answers');
+// list of controllers here
 const questions = require('../controllers/questions');
-const votes = require('../controllers/votes');
 
-//combine models into one Object
-const models = { Answer, Question, Vote };
+// combine models ino one object
+const models = { Question };
 
 const routersInit = config => {
-    const router = express();
+  const router = express();
 
-    //register api pointer
-    router.use('/questions', models(Question, { config }));
+  // register api points
+  router.use('/questions', questions(models, { config }));
 
-    //catch api all errors
-    router.use(errorHandler);
+  // catch api all errors
+  router.use(errorHandler);
+  return router;
+};
 
-    return router;
-}
+module.exports = routersInit;
