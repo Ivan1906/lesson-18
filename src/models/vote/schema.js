@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const schema = new Schema({
-  isLike: {
+  isPositive: {
     type: Boolean,
     required: [true]
   },
-  answerBy: {
+  answerId: {
     type: ObjectId,
     required: [true]
   },
@@ -15,7 +15,7 @@ const schema = new Schema({
     type: Date,
     required: [true],
   },
-  createdBy: {
+  createdById: {
     type: ObjectId,
   }
 });
